@@ -11,7 +11,7 @@ def run_interactive_chat():
     
     # Initialize state
     state = {
-        "input_file": None,
+        "input_file": "./data/test.png",
         "messages": []
     }
 
@@ -46,7 +46,11 @@ def run_interactive_chat():
 
             # Show agent reply
             final_message = result["messages"][-1].content
-            print(f"🦇 Alfred: {final_message}\n")
+            if final_message == "END":
+                print("🦇 Alfred: Task completed.")
+                # Optionally, you could add logic here to handle the end of the conversation differently
+            else:
+                print(f"🦇 Alfred: {final_message}\n")
 
             # Update state
             state["messages"] = result["messages"]
